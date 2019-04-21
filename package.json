@@ -1,7 +1,7 @@
 {
-  "name": "GamersNation",
-  "description": "GamersNationBot",
-  "version": "1.0.0",
+  "name": "testbotheya",
+  "description": "testbotheya",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
