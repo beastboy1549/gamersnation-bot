@@ -1,5 +1,7 @@
+const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
-const footer = "Gamer Nation's Bot | Made and developed by Floxylak#7882"
+const footer = "Vortex's Bot | Made and developed by Floxylak#7882"
+const token = "NTY4ODIxNTU1MTQ5Mjc1MTM2.XLnqoA.85Q769PwT2Qh8pVgluSNxWI54Mg"
 const fs = require("fs");
 const ms = require("ms");
 
@@ -10,7 +12,7 @@ bot.on("ready", async () => {
   //bot.user.setActivity("Elite Clan", {type: "WATCHING"});
 
   let statuses = [
-    "gn!Help for help!",
+    "vg!help for help!",
     `over ${bot.users.size} users!`,
     `Dm me with Help to create a ticket!`
   ]
@@ -22,56 +24,11 @@ bot.on("ready", async () => {
 
 });
 
-bot.on("guildMemberAdd", member =>{
-
-  let role = member.guild.roles.find(role => role.name === "Unverified");
-  let welcomechannel = member.guild.channels.find(channel => channel.name === "👋join-leave👋")
-  member.addRole(role.id);
-
-  let joinembed = new Discord.RichEmbed()
-  .setColor("#1dff00")
-  .addField(`Welcome to the army, ${member.user.username}!`, `Please have a look at the rules (<#567301256226537492>), keep the chat friendly. Welcome to GamersNation`)
-  .setFooter(footer)
-  .setThumbnail(`${member.user.avatarURL}`)
-  .setTimestamp();
-  welcomechannel.send(joinembed);
-
-  let dmjoinembed = new Discord.RichEmbed()
-  .setColor("#1dff00")
-  .addField("Welcome to GamersNation", `please have a look at <#567301256226537492>. do gn!agree at <#567301256226537492> to verify and view the whole cool server!`)
-  .setFooter(footer)
-  .setThumbnail(`${member.user.avatarURL}`)
-  .setTimestamp();
-  member.send(dmjoinembed);
-});
-
-bot.on('guildMemberRemove', member => {
-
-  let welcomechannel = member.guild.channels.find(channel => channel.name === "👋join-leave👋")
-
-  let joinembed = new Discord.RichEmbed()
-  .setColor("#f44242")
-  .addField(`Our true member ${member.user.username} left us alone.`, `One person leaves, two persons cry.
-     :cry: F in the chat for ${member.user.username} :cry: `)
-  .setFooter(footer)
-  .setThumbnail(`${member.user.avatarURL}`)
-  .setTimestamp();
-  welcomechannel.send(joinembed);
-
-  let dmjoinembed = new Discord.RichEmbed()
-  .setColor("#f44242")
-  .addField("You left the gang!", `You left us alone crying. Join back using this invite please.`)
-  .setFooter(footer)
-  .setThumbnail(`${member.user.avatarURL}`)
-  .setTimestamp();
-  member.user.send(dmjoinembed);
-  member.user.send("https://discord.gg/NVyuUvx");
-});
 
 bot.on("message", async message => {
   if (message.author.bot) return;
 
-  let prefix = "gn!"
+  let prefix = "vg!"
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0].toLowerCase();
   let args = messageArray.slice(1);
@@ -186,7 +143,7 @@ bot.on("message", async message => {
              var channel;
              var Member;
              channel = await guild.createChannel(`${message.author.username}`, "text").catch(ex => console.error(ex));
-             channel.setParent('569134936137662479')
+             channel.setParent('574150167821811722')
              var newMessage = await channel.send("To close this ticket, Please follow it with a ``gn!close`` command!")
              var Roles = bot.guilds.find(x => x.id === "519070256849879041").roles.array();
              var AuthorRole = await newMessage.guild.createRole({
@@ -236,7 +193,7 @@ bot.on("message", async message => {
            let RoleID = message.guild.roles.find(role => role.name === message.channel.name)
            let closerole = message.guild.roles.get(`${RoleID.id}`)
            let userticket = message.guild.members.find(member => member.displayName.toLowerCase() === message.channel.name.toLowerCase());
-           if(message.channel.parentID === "569134936137662479"){
+           if(message.channel.parentID === "574150167821811722"){
              if(userticket){
                userticket.send("Your ticket was closed.")
              }
@@ -410,43 +367,43 @@ if(cmd === `${prefix}avatar`){
 
 if(cmd === `${prefix}help`){
 
-  message.author.send("``GamersNation Bot Commands, Made By Floxylak#7882.``")
+  message.author.send("``Vortex's Bot Commands, Made By Floxylak#7882.``")
   let helpembed = new Discord.RichEmbed()
   .setColor("#00ff08")
   .setDescription("Thank you for choosing GamersNation.")
-  .addField(`Fun commands`, `gn!8ball <Question> - **Asks the bot a question.**
+  .addField(`Fun commands`, `vg!8ball <Question> - **Asks the bot a question.**
     ↽————————⇁
-    gn!cat - **Gets a random photo of a cat.**
+    vg!cat - **Gets a random photo of a cat.**
     ↽————————⇁
-    gn!dog - **Gets a random photo of a dog**
+    vg!dog - **Gets a random photo of a dog**
     ↽————————⇁
-    gn!meme - **Gets a random meme**
+    vg!meme - **Gets a random meme**
     ↽————————⇁
-    gn!rps - **Plays rock, papar, and CIZZORZ**
+    vg!rps - **Plays rock, papar, and CIZZORZ**
     ↽————————⇁
-    gn!avater <user> - **Gets the avatar of the user**
+    vg!avater <user> - **Gets the avatar of the user**
     ↽————————⇁
-    gn!joke - **Says a random joke.**
+    vg!joke - **Says a random joke.**
     ↽————————⇁
-    gn!updates - **Gets the latest bot + server updates.**`, true)
+    vg!updates - **Gets the latest bot + server updates.**`, true)
   .addField(`-----------------------------------------------
-    Mod commands`, `gn!Mute <user> <time> - **Mutes a user.**
+    Mod commands`, `vg!Mute <user> <time> - **Mutes a user.**
     ↽————————⇁
-    gn!warn <user> <reason> - **Warns a user**
+    vg!warn <user> <reason> - **Warns a user**
     ↽————————⇁
-    gn!ban <user> <reason> - **Bans a user**
+    vg!ban <user> <reason> - **Bans a user**
     ↽————————⇁
-    gn!clearwarns <user> - **Clears warns**
+    vg!clearwarns <user> - **Clears warns**
     ↽————————⇁
-    gn!clear <amount> - **Purges a certain amount of messages**
+    vg!clear <amount> - **Purges a certain amount of messages**
     ↽————————⇁
-    gn!unmute <user> - **unmutes a user**
+    vg!unmute <user> - **unmutes a user**
     ↽————————⇁
-    gn!unban <user> - **unbans a user**
+    vg!unban <user> - **unbans a user**
     ↽————————⇁
-    gn!report <user> <report> - **reports an admin/user.**
+    vg!report <user> <report> - **reports an admin/user.**
     ↽————————⇁
-    gn!kick <user> <reason> - **kicks a user**`, true)
+    vg!kick <user> <reason> - **kicks a user**`, true)
     .setFooter(footer)
     .setTimestamp();
 
@@ -474,9 +431,15 @@ if(cmd === `${prefix}clear`){
 
 if(cmd === `${prefix}updates`){
   let UpdatesEmbed = new Discord.RichEmbed()
-  .addField("Updates:", `- Added new rps command! Play rock, Paper, and cizzorz with the bot! Charge on the new rps command.
-  - Added new report command! You can now report users/admins or anyone for breaking the rules!
-  - Added new joke command! Do gn!joke for a random joke :wink:`)
+  .addField("Updates:", `- Stole 7M+ Cookies.
+  - Slapped Cryptic Twice.
+  - Built the wall
+  - Changed the prefix to vg!
+  - Got rid of the Welcome + leave message, no more crying ;3
+  - Added new command vg!fact gets the fact of the day.
+  - Fixed vg!fact command not working.
+  - Added new vg!cookie command.
+  - Updates will now be removed every 24 Hours!`)
   .setColor("#00faff")
   .setFooter(footer)
   .setTimestamp();
@@ -520,24 +483,40 @@ if(cmd === `${prefix}report`){
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
 
-    let reportschannel = message.guild.channels.find(`name`, "reports");
+    let reportschannel = message.guild.channels.get("569342886483722290")
     if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
 
     message.delete().catch(O_o=>{});
-    message.channel.send("Successfully Reported " + `${rUser.id}` + " for " + rreason)
+    message.channel.send("Successfully Reported " + `${rUser.displayName}` + " for " + rreason)
     reportschannel.send(reportEmbed);
   }
 
 if(cmd === `${prefix}xgjfguhgkkk`){
   message.delete()
   let LOChannel = bot.channels.get("567302787327852554")
-  LOChannel.send("The bot was just updated! Do gn!updates, To look at the new features!")
+  LOChannel.send("The bot was just updated! Do vg!updates, To look at the new features!")
 }
 
 if(cmd === `${prefix}joke`){
   message.channel.send("Your life is a joke.")
 }
 
+if(cmd === `${prefix}noxdhfe`){
+  message.delete()
+  let LOChannel = bot.channels.get("567302787327852554")
+  LOChannel.send("The bot is online, Use me please my girlfriend left me ;c")
+}
+
+
+
+if(cmd === `${prefix}fact`){
+  message.channel.send("Floxylak is ugly.")
+}
+
+if(cmd === `${prefix}cookie`){
+  message.channel.send("NO COOKIE FOR YOU!!")
+}
+
 });
 
-bot.login(process.env.BOT_TOKEN);
+bot.login(token);
