@@ -1,6 +1,6 @@
 {
-  "name": "testbotheya",
-  "description": "testbotheya",
+  "name": "Rod Helpline Bot",
+  "description": "A bot for Rod.",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
